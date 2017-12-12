@@ -1,14 +1,33 @@
-…or create a new repository on the command line
+<html>
+    <head>
+        <title>Baza kontaktow</title>
+          <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+   <?php     
+include ("db_connection.php");
 
-echo "# school" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/KatharsisX/school.git
-git push -u origin master
-…or push an existing repository from the command line
-
-git remote add origin https://github.com/KatharsisX/school.git
-git push -u origin master
-…or import code from another repository
-You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+        if($result=$mysqli->query("SELECT * FROM contacts ORDER BY ID")){
+            if($result->num_rows>0){
+                 
+                echo "<table>";
+                echo "<tr><th>ID</th><th>imie</th><th>nazwisko</th><th>tel</th></tr>";
+                while($row=$result->fetch_object()){
+                    $id=$row->ID;
+                    $format = "<tr><td>%d</td><td>%s</td><td>%s</td><td>%s</td>
+                    <td><a href=\"delete.php?id=$id\">USUN</a></td> 
+                    <td><a href=\"addmodify.php?id=$id\">EDUTUJ</a></td></tr>";
+                    printf($format,$row->ID,$row->imie,$row->nazwisko,$row->tel);
+                   
+                   
+                    
+                }
+               
+                }
+            }
+             echo "</table>";
+          echo "<a href=\"addmodify.php \">Dodaj nowy kontakt </a>";
+    ?>
+        
+    </body>
+</html>
