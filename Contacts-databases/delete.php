@@ -1,5 +1,7 @@
 <?php
-include("db_connection.php");
+
+include('connect.php');
+
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id=$_GET['id'];
     if($stmt=$mysqli->prepare("DELETE FROM contacts WHERE id = ? LIMIT 1")){
@@ -9,4 +11,5 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     }
 }
 $mysqli->close();
-header('location:index.php');
+$news= "pomyslnie usunieto kontakt";
+header("location:index.php?news=$news");

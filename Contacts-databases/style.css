@@ -1,9 +1,28 @@
+body{
+    max-width: 100%;
+    background-color:gray;
+}
+
+.edit_form{
+    max-width:20%;
+    padding: 5px;
+    border: solid 2px;
+    background-color:orange;
+}
+
 table{
-    border: solid 2px black;
-    padding: 10px;
-    margin: 5px;
+    padding: 5px;
+    border: solid 2px;
+    background-color:orange;
 }
 td{
-    border: solid 1px black;
-    padding: 5px;
+    border:solid 1px;
+    background-color:silver;
+}
+
+.blad>p{
+    color:red;
+}
+.news>p{
+    color:blue;
 }
