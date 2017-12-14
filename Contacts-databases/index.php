@@ -1,5 +1,5 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" type="text/css" href="./styl.css">
   <meta charset="utf-8">
 </head>
 <body>
@@ -27,15 +27,16 @@
             if($result->num_rows>0){
                 
                 echo "<table>";
-                echo "<tr><th>Imie</th><th>Nazwisko</th><th>Telefon</th></tr>";
+                echo "<tr><th>Imie</th><th>Nazwisko</th><th>Telefon</th><th>zdj</th></tr>";
                 
                 while($row=$result->fetch_object()){
                     $id=$row->id;
-                    $format = "<tr><td style=\"display:none;\">%d</td><td>%s</td><td>%s</td><td>%s</td>
+                    $format = "<tr><td style=\"display:none;\">%d</td><td>%s</td><td>%s</td><td>%s</td><td><img class='img' src='%s'</td>
                     <td><a href=\"delete.php?id=$id\">USUN</a></td> 
                     <td><a href=\"records.php?id=$id\">EDUTUJ</a></td></tr>";
                     
-                    printf($format,$row->id,$row->imie,$row->nazwisko,$row->telefon);
+                    printf($format,$row->id,$row->imie,$row->nazwisko,$row->telefon, $row->zdj);
+                    
                       
                 }
                 

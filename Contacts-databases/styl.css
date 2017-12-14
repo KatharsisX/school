@@ -26,3 +26,7 @@ td{
 .news>p{
     color:blue;
 }
+.img{
+    max-width: 100px;
+    height: 100px;
+}
