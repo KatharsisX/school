@@ -30,24 +30,19 @@
                 echo "<tr><th>Imie</th><th>Nazwisko</th><th>Telefon</th><th>zdj</th></tr>";
                 
                 while($row=$result->fetch_object()){
-                    if($row->zdj != ""){
+                    if($row->zdj == ""){
+                        $row->zdj = "http://dinoanimals.pl/wp-content/uploads/2013/09/Nosacz.jpg";
+                    }
                     $id=$row->id;
                     $format = "<tr><td style=\"display:none;\">%d</td><td>%s</td><td>%s</td><td>%s</td><td><img class='img' src='%s'</td>
                     <td><a href=\"delete.php?id=$id\">USUN</a></td> 
-                    <td><a href=\"records.php?id=$id\">EDUTUJ</a></td></tr>";
+                    <td><a href=\"records.php?id=$id\">EDUTUJ</a></td>
+                    <td><a href=\"more.php?id=$id\">SZCZEGOLY</a></td>
+                    </tr>";
                     
                     printf($format,$row->id,$row->imie,$row->nazwisko,$row->telefon, $row->zdj);
-                    }
-                    else{
-                        
-                    $id=$row->id;
-                    $format = "<tr><td style=\"display:none;\">%d</td><td>%s</td><td>%s</td><td>%s</td><td><img class='img' src=http://dinoanimals.pl/wp-content/uploads/2013/09/Nosacz.jpg></td>
-                    <td><a href=\"delete.php?id=$id\">USUN</a></td> 
-                    <td><a href=\"records.php?id=$id\">EDUTUJ</a></td></tr>";
                     
-                    printf($format,$row->id,$row->imie,$row->nazwisko,$row->telefon);
-                    
-                    }
+              
                       
                 }
                 
